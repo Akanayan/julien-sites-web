@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julien — Création de sites web pour commerces de proximité</title>
+<meta name="description" content="Un site à votre nom, en ligne en 48 h, pour 390 €. Trois modèles à parcourir : salon de coiffure, institut de beauté, garage. Modifications à volonté avant la mise en ligne.">
+<meta name="theme-color" content="#0b1220">
+<link rel="canonical" href="https://akanayan.github.io/julien-sites-web/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://akanayan.github.io/julien-sites-web/">
+<meta property="og:title" content="Julien — Sites web pour commerces de proximité">
+<meta property="og:description" content="Un site à votre nom, en ligne en 48 h, pour 390 €. Trois modèles à parcourir en direct.">
+<meta property="og:image" content="https://akanayan.github.io/julien-sites-web/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root {
+  --night: #0b1220;
+  --night-2: #111b2e;
+  --night-3: #18243b;
+  --cream: #f6f1e7;
+  --paper: #efe7d8;
+  --orange: #ff7a3d;
+  --orange-d: #e9601f;
+  --mute: #9eaabf;
+  --mute-ink: #56607a;
+  --line: rgba(246, 241, 231, .14);
+  --line-ink: rgba(11, 18, 32, .14);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --wrap: min(1180px, 100% - 48px);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--night); color: var(--cream); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+section[id] { scroll-margin-top: 84px; }
+.wrap { width: var(--wrap); margin-inline: auto; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--cream); color: var(--night); padding: 10px 16px; border-radius: 10px; z-index: 100; font-weight: 700; }
+.skip:focus { top: 12px; }
+
+/* Boutons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid transparent; font-weight: 700; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: transform .25s var(--ease), background-color .25s, border-color .25s, color .25s; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-main { background: var(--orange); color: #1a0d05; }
+.btn-main:hover { background: #ff8d58; }
+.btn-ghost { border-color: var(--line); color: var(--cream); background: rgba(246, 241, 231, .04); }
+.btn-ghost:hover { border-color: rgba(246, 241, 231, .5); }
+.btn-ink { background: var(--night); color: var(--cream); }
+.btn-ink:hover { background: var(--night-3); }
+.btn-wa { background: #1fae5b; color: #04180c; }
+.btn-wa:hover { background: #35c471; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; }
+
+/* Navigation */
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background-color .3s, box-shadow .3s; }
+.nav.stuck { background: rgba(11, 18, 32, .98); box-shadow: 0 1px 0 var(--line); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.02em; }
+.brand img { width: 40px; height: 40px; border-radius: 11px; }
+.brand small { display: block; font-family: var(--body); font-weight: 500; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); line-height: 1.1; }
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; font-size: .95rem; font-weight: 500; color: var(--mute); transition: color .2s; }
+.nav-links a:hover { color: var(--cream); }
+.nav .btn { min-height: 44px; padding: 0 18px; font-size: .92rem; }
+
+/* Accueil */
+.hero { position: relative; padding: 140px 0 0; overflow: hidden; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background:
+  radial-gradient(60% 55% at 82% 28%, rgba(255, 122, 61, .2), transparent 70%),
+  radial-gradient(50% 60% at 8% 90%, rgba(60, 110, 200, .18), transparent 70%),
+  linear-gradient(180deg, #0d1627, var(--night)); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .5; background-image: radial-gradient(rgba(246, 241, 231, .16) 1px, transparent 1.4px); background-size: 28px 28px; mask-image: linear-gradient(180deg, #000 10%, transparent 85%); -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 85%); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.7rem, 5.6vw, 5.1rem); font-weight: 800; margin-top: 22px; }
+.hero h1 em { display: block; font-style: normal; color: var(--orange); }
+.hero-lead { margin-top: 26px; max-width: 34em; font-size: 1.12rem; color: #c6cfdf; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.hero-note { margin-top: 18px; font-size: .9rem; color: var(--mute); }
+
+.hero-art { perspective: 1500px; }
+.fan { position: relative; aspect-ratio: 1 / 1.04; transform-style: preserve-3d; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); }
+.win { position: absolute; width: 78%; margin: 0; border-radius: 14px; overflow: hidden; background: #0a0f1a; box-shadow: 0 30px 60px -18px rgba(0, 0, 0, .7), 0 0 0 1px rgba(246, 241, 231, .12); }
+.win-bar { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; background: #1a2336; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.win-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(246, 241, 231, .3); }
+.win-bar i:first-child { background: var(--orange); }
+.win-bar span { margin-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fan .win:nth-child(1) { left: 0; top: 0; rotate: -5deg; transform: translateZ(-60px); }
+.fan .win:nth-child(2) { left: 22%; top: 25%; rotate: 3.5deg; transform: translateZ(0); }
+.fan .win:nth-child(3) { left: 5%; top: 51%; rotate: -1.5deg; transform: translateZ(70px); }
+.js .fan .win { animation: winIn .9s var(--ease) both, drift 9s ease-in-out infinite 1s; }
+.js .fan .win:nth-child(2) { animation-delay: .12s, 1.4s; animation-duration: .9s, 11s; }
+.js .fan .win:nth-child(3) { animation-delay: .24s, 1.8s; animation-duration: .9s, 10s; }
+@keyframes winIn { from { opacity: 0; translate: 0 60px; } to { opacity: 1; translate: 0 0; } }
+@keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 84px; border-top: 1px solid var(--line); }
+.facts li { padding: 26px 24px 30px 0; }
+.facts li + li { padding-left: 28px; border-left: 1px solid var(--line); }
+.facts b { display: block; font-family: var(--display); font-size: clamp(1.9rem, 3.2vw, 2.7rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.facts span { display: block; margin-top: 8px; color: var(--mute); font-size: .95rem; }
+
+/* Titres de section */
+.head { display: grid; gap: 18px; max-width: 760px; }
+.head h2 { font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
+.head p { color: var(--mute); font-size: 1.08rem; max-width: 36em; }
+.light .head p { color: var(--mute-ink); }
+.sec { padding: 120px 0; }
+.light { background: var(--cream); color: var(--night); }
+
+/* Modèles */
+.models { display: grid; gap: 96px; margin-top: 72px; }
+.model { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.model:nth-child(even) .shot { order: 2; }
+.shot { position: relative; display: block; width: 100%; aspect-ratio: 16 / 11.4; padding: 0; border: 0; border-radius: 28px; overflow: hidden; background: var(--bg); text-align: left; isolation: isolate; }
+.shot::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(70% 70% at 80% 10%, var(--glow), transparent 70%); }
+.shot .win { position: absolute; left: 6%; top: 9%; width: 80%; transition: transform .6s var(--ease); }
+.shot .win-bar { background: rgba(10, 14, 22, .92); }
+.phone { position: absolute; right: 5%; bottom: -7%; width: 23%; margin: 0; border-radius: 22px; border: 6px solid #07090d; background: #07090d; overflow: hidden; box-shadow: 0 26px 50px -14px rgba(0, 0, 0, .65); transition: transform .6s var(--ease); }
+.shot:hover .win, .shot:focus-visible .win { transform: translate(-1.5%, -1.5%) scale(1.015); }
+.shot:hover .phone, .shot:focus-visible .phone { transform: translateY(-5%); }
+.shot-cta { position: absolute; left: 6%; bottom: 6%; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 999px; background: rgba(8, 12, 20, .9); color: var(--cream); font-weight: 700; font-size: .92rem; box-shadow: 0 0 0 1px rgba(246, 241, 231, .16); transition: background-color .25s, color .25s; }
+.shot-cta i { width: 9px; height: 9px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(255, 122, 61, .7); animation: pulse 2s infinite; }
+.shot:hover .shot-cta { background: var(--orange); color: #1a0d05; }
+.shot:hover .shot-cta i { background: #1a0d05; animation: none; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(255, 122, 61, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 122, 61, 0); } }
+.m-coiffeur { --bg: linear-gradient(140deg, #3a2318, #170f0b); --glow: rgba(200, 105, 58, .5); --a: #d98a5c; }
+.m-institut { --bg: linear-gradient(140deg, #cfdcc9, #efd9cf); --glow: rgba(255, 255, 255, .7); --a: #b9cbb4; }
+.m-garage { --bg: linear-gradient(140deg, #2a2e37, #101216); --glow: rgba(255, 90, 31, .4); --a: #ff6a33; }
+.model-num { font-family: var(--display); font-weight: 800; font-size: .95rem; color: var(--a); letter-spacing: .04em; }
+.model h3 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); margin-top: 10px; }
+.model-kind { margin-top: 8px; color: var(--mute); font-weight: 500; }
+.model-desc { margin-top: 18px; color: #c6cfdf; }
+.model-list { margin-top: 20px; display: grid; gap: 10px; }
+.model-list li { display: flex; gap: 12px; align-items: flex-start; font-size: .98rem; }
+.model-list li::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: .55em; border-radius: 2px; background: var(--a); transform: rotate(45deg); }
+.model-cta { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 28px; }
+.link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; text-underline-offset: 5px; text-decoration-thickness: 1.5px; color: var(--cream); }
+.link:hover { color: var(--orange); }
+.models-note { margin-top: 72px; padding: 22px 26px; border: 1px dashed var(--line); border-radius: 18px; color: var(--mute); font-size: .96rem; }
+.models-note b { color: var(--cream); }
+
+/* Bandeau métiers */
+.trades { border-block: 1px solid var(--line); padding: 26px 0; overflow: hidden; }
+.trades-track { display: flex; width: max-content; gap: 0; animation: slide 38s linear infinite; }
+.trades:hover .trades-track { animation-play-state: paused; }
+.trades ul { display: flex; flex: none; }
+.trades li { display: flex; align-items: center; gap: 28px; padding-right: 28px; font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2.1rem); letter-spacing: -.02em; white-space: nowrap; color: rgba(246, 241, 231, .5); }
+.trades li::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* Inclus */
+.incl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
+.incl li { padding: 30px 28px 32px; border-radius: 22px; background: #fffaf0; border: 1px solid var(--line-ink); transition: transform .35s var(--ease), box-shadow .35s; }
+.incl li:hover { transform: translateY(-5px); box-shadow: 0 22px 40px -22px rgba(11, 18, 32, .35); }
+.incl svg { width: 34px; height: 34px; color: var(--orange-d); }
+.incl h3 { font-size: 1.32rem; margin-top: 20px; letter-spacing: -.02em; }
+.incl p { margin-top: 10px; color: var(--mute-ink); font-size: .98rem; }
+
+/* Offre */
+.offer { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; align-items: start; margin-top: 64px; }
+.price { position: relative; padding: 40px 38px 38px; border-radius: 28px; background: var(--cream); color: var(--night); overflow: hidden; }
+.price::after { content: ""; position: absolute; right: -70px; top: -70px; width: 220px; height: 220px; border-radius: 50%; background: var(--orange); opacity: .16; }
+.price-tag { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-d); }
+.price-num { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; font-family: var(--display); font-weight: 800; letter-spacing: -.04em; line-height: .9; font-size: clamp(4.4rem, 9vw, 6.6rem); }
+.price-num small { font-family: var(--body); font-weight: 500; font-size: 1rem; letter-spacing: 0; color: var(--mute-ink); line-height: 1.3; }
+.pay { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+.pay div { padding: 16px 18px; border-radius: 16px; background: #fffaf0; border: 1px solid var(--line-ink); }
+.pay b { display: block; font-family: var(--display); font-size: 1.5rem; letter-spacing: -.02em; }
+.pay span { display: block; font-size: .9rem; color: var(--mute-ink); line-height: 1.4; margin-top: 4px; }
+.price .btn { width: 100%; margin-top: 26px; }
+.offer-list { display: grid; gap: 0; }
+.offer-list li { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); }
+.offer-list li:last-child { border-bottom: 1px solid var(--line); }
+.offer-list b { font-family: var(--display); font-size: 1.1rem; letter-spacing: -.01em; }
+.offer-list span { color: #c6cfdf; font-size: .98rem; }
+
+/* Étapes */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 64px; counter-reset: step; }
+.steps li { position: relative; padding: 34px 26px 0 0; counter-increment: step; }
+.steps li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--line-ink); }
+.steps li::after { content: ""; position: absolute; left: 0; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: var(--orange-d); box-shadow: 0 0 0 6px var(--cream); }
+.steps i { font-style: normal; font-family: var(--display); font-weight: 800; font-size: .9rem; color: var(--orange-d); letter-spacing: .06em; }
+.steps i::before { content: "0" counter(step) " — "; }
+.steps h3 { font-size: 1.4rem; margin-top: 12px; letter-spacing: -.02em; }
+.steps p { margin-top: 10px; color: var(--mute-ink); font-size: .98rem; }
+
+/* Questions */
+.faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; cursor: pointer; list-style: none; font-family: var(--display); font-weight: 700; font-size: 1.22rem; letter-spacing: -.02em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--line); background: linear-gradient(var(--cream), var(--cream)) center / 12px 1.5px no-repeat, linear-gradient(var(--cream), var(--cream)) center / 1.5px 12px no-repeat; transition: transform .3s var(--ease), background-color .3s; }
+.faq details[open] summary::after { transform: rotate(45deg); background-color: var(--orange); border-color: var(--orange); }
+.faq details p { padding: 0 54px 26px 0; color: #c6cfdf; }
+
+/* Contact */
+.contact { position: relative; overflow: hidden; isolation: isolate; }
+.contact::before { content: ""; position: absolute; z-index: -1; left: -10%; bottom: -40%; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255, 122, 61, .2), transparent 65%); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.contact h2 { font-size: clamp(2.3rem, 5vw, 4.2rem); font-weight: 800; }
+.contact-lead { margin-top: 22px; color: var(--mute-ink); font-size: 1.1rem; max-width: 30em; }
+.contact .btn-wa { margin-top: 30px; }
+.contact-num { margin-top: 18px; color: var(--mute-ink); font-size: .96rem; }
+.contact-num b { color: var(--night); }
+.form { padding: 32px; border-radius: 26px; background: var(--night); color: var(--cream); box-shadow: 0 30px 60px -30px rgba(11, 18, 32, .6); }
+.form h3 { font-size: 1.5rem; letter-spacing: -.02em; }
+.form > p { margin-top: 8px; color: var(--mute); font-size: .95rem; }
+.field { margin-top: 20px; }
+.field label, .field legend { display: block; margin-bottom: 8px; font-size: .88rem; font-weight: 700; padding: 0; }
+.field input, .field select { width: 100%; height: 52px; padding: 0 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--night-2); color: var(--cream); font: inherit; font-size: 1rem; transition: border-color .2s; }
+.field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f6f1e7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 18px; padding-right: 44px; }
+.field input::placeholder { color: #6f7c94; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--orange); }
+.field.bad input { border-color: #ff6b6b; }
+.err { display: none; margin-top: 6px; font-size: .86rem; color: #ff9c9c; }
+.field.bad .err { display: block; }
+fieldset.field { border: 0; padding: 0; margin-inline: 0; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { margin: 0; cursor: pointer; }
+.chips input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chips span { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--line); font-size: .92rem; font-weight: 500; transition: background-color .2s, border-color .2s, color .2s; }
+.chips input:checked + span { background: var(--cream); border-color: var(--cream); color: var(--night); font-weight: 700; }
+.chips input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 2px; }
+.form .btn { width: 100%; margin-top: 26px; }
+.form-ok { display: none; margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(31, 174, 91, .16); color: #a9ecc6; font-size: .94rem; }
+.form-ok.on { display: block; }
+
+/* Pied de page */
+.foot { padding: 44px 0 52px; border-top: 1px solid var(--line); color: var(--mute); font-size: .92rem; }
+.foot-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 22px; }
+.foot nav a { text-decoration: none; }
+.foot nav a:hover { color: var(--cream); }
+.foot-legal { display: block; margin-top: 18px; font-size: .86rem; color: #74809a; }
+
+/* Visionneuse */
+.viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #070b14; color: var(--cream); overflow: hidden; }
+.viewer::backdrop { background: #070b14; }
+.viewer[open] { display: flex; flex-direction: column; }
+.v-bar { flex: none; display: flex; align-items: center; gap: 16px; height: 64px; padding: 0 18px; border-bottom: 1px solid var(--line); }
+.v-title { min-width: 0; flex: 1; }
+.v-title b { display: block; font-family: var(--display); font-size: 1.05rem; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.v-title span { display: block; font-size: .78rem; color: var(--mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--night-2); border: 1px solid var(--line); }
+.seg button { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: var(--mute); font-weight: 700; font-size: .88rem; }
+.seg button svg { width: 17px; height: 17px; }
+.seg button[aria-pressed="true"] { background: var(--cream); color: var(--night); }
+.v-open { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 999px; font-size: .9rem; font-weight: 700; text-decoration: none; color: var(--mute); }
+.v-open:hover { color: var(--cream); }
+.v-open svg { width: 17px; height: 17px; }
+.v-close { flex: none; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--orange); color: #1a0d05; font-weight: 700; font-size: .92rem; }
+.v-close svg { width: 16px; height: 16px; }
+.v-stage { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; padding: 18px; background: radial-gradient(60% 60% at 50% 0%, #152037, #070b14); }
+.v-device { position: relative; width: 100%; height: 100%; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--line); transition: width .45s var(--ease), border-radius .45s; }
+.v-device.as-phone { width: 390px; max-width: 100%; height: min(100%, 844px); border-radius: 40px; box-shadow: 0 0 0 10px #05070c, 0 0 0 11px rgba(246, 241, 231, .2), 0 40px 80px -20px #000; }
+.v-device iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+.v-load { position: absolute; inset: 0; display: grid; place-items: center; background: #0d1423; color: var(--mute); font-size: .95rem; transition: opacity .3s; }
+.v-load.off { opacity: 0; pointer-events: none; }
+.v-load i { display: block; width: 34px; height: 34px; margin: 0 auto 14px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--orange); animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Barre mobile */
+.dock { display: none; }
+
+/* Apparitions */
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+.js .rv.in { opacity: 1; transform: none; }
+
+/* Tablette */
+@media (max-width: 1020px) {
+  .nav-links { display: none; }
+  .hero { padding-top: 116px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  .hero-art { max-width: 560px; width: 100%; margin-inline: auto; }
+  .model, .model:nth-child(even) { grid-template-columns: 1fr; gap: 30px; }
+  .model:nth-child(even) .shot { order: 0; }
+  .incl { grid-template-columns: repeat(2, 1fr); }
+  .offer, .faq, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .steps { grid-template-columns: repeat(2, 1fr); row-gap: 44px; }
+}
+
+/* Téléphone */
+@media (max-width: 720px) {
+  :root { --wrap: calc(100% - 36px); }
+  body { font-size: 16px; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .sec { padding: 78px 0; }
+  .nav-in { height: 62px; }
+  .brand img { width: 36px; height: 36px; }
+  .brand small { display: none; }
+  .hero { padding-top: 96px; }
+  .hero h1 { font-size: clamp(2.5rem, 11.5vw, 3.4rem); }
+  .hero-lead { font-size: 1.04rem; }
+  .hero-cta .btn { width: 100%; }
+  .hero-art { margin-top: -6px; }
+  .fan { aspect-ratio: 1 / 1.02; }
+  .win-bar { height: 22px; padding: 0 9px; font-size: .56rem; }
+  .win-bar i { width: 6px; height: 6px; }
+  .facts { grid-template-columns: 1fr; margin-top: 56px; }
+  .facts li, .facts li + li { display: flex; align-items: baseline; gap: 16px; padding: 18px 0; border-left: 0; }
+  .facts li + li { border-top: 1px solid var(--line); }
+  .facts b { flex: none; width: 92px; font-size: 1.9rem; }
+  .facts span { margin: 0; }
+  .models { gap: 64px; margin-top: 48px; }
+  .shot { aspect-ratio: 1 / .92; border-radius: 22px; }
+  .shot .win { left: 5%; top: 7%; width: 88%; }
+  .phone { width: 31%; right: 5%; bottom: -10%; border-width: 5px; border-radius: 18px; }
+  .shot-cta { left: 5%; bottom: 5%; padding: 10px 15px; font-size: .88rem; }
+  .model-cta .btn { width: 100%; }
+  .models-note { margin-top: 52px; padding: 18px 20px; }
+  .incl { grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
+  .incl li { display: grid; grid-template-columns: 34px 1fr; column-gap: 18px; padding: 22px 20px; }
+  .incl svg { grid-row: span 2; margin-top: 2px; }
+  .incl h3 { margin-top: 0; font-size: 1.18rem; }
+  .incl p { margin-top: 6px; }
+  .offer { margin-top: 44px; }
+  .price { padding: 30px 24px 26px; border-radius: 24px; }
+  .pay { grid-template-columns: 1fr; }
+  .offer-list li { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  .steps { grid-template-columns: 1fr; row-gap: 0; margin-top: 44px; }
+  .steps li { padding: 0 0 34px 34px; }
+  .steps li::before { left: 6px; right: auto; top: 6px; bottom: -6px; width: 2px; height: auto; }
+  .steps li:last-child::before { display: none; }
+  .steps li::after { top: 4px; }
+  .steps li:last-child { padding-bottom: 0; }
+  .faq summary { font-size: 1.08rem; padding: 20px 0; }
+  .faq details p { padding-right: 0; }
+  .form { padding: 24px 20px; border-radius: 22px; }
+  .contact .btn-wa { width: 100%; }
+  .foot { padding-bottom: 36px; }
+  .dock { position: fixed; z-index: 40; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; border-radius: 999px; background: rgba(11, 18, 32, .96); box-shadow: 0 0 0 1px var(--line), 0 18px 40px -10px rgba(0, 0, 0, .7); transition: transform .4s var(--ease), opacity .3s; }
+  .dock.hide { transform: translateY(130%); opacity: 0; pointer-events: none; }
+  .dock .btn { min-height: 46px; padding: 0 10px; font-size: .92rem; }
+  .v-bar { height: 58px; padding: 0 10px 0 14px; gap: 8px; }
+  .seg, .v-open span { display: none; }
+  .v-open { padding: 0 10px; }
+  .v-close { padding: 0 14px; }
+  .v-stage { padding: 0; }
+  .v-device, .v-device.as-phone { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .rv { opacity: 1; transform: none; }
+  .trades-track { transform: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#modeles">Aller aux modèles</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Julien, création de sites web — haut de page">
+      <img src="logo.svg" alt="" width="40" height="40">
+      <span>Julien<small>Création de sites web</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#modeles">Modèles</a>
+      <a href="#inclus">Ce qui est inclus</a>
+      <a href="#offre">Tarif</a>
+      <a href="#etapes">Déroulement</a>
+      <a href="#questions">Questions</a>
+    </nav>
+    <a class="btn btn-main" href="#contact">Me contacter</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Sites web pour commerces de proximité</p>
+        <h1>Un vrai site à votre nom, <em>en ligne en 48&nbsp;h.</em></h1>
+        <p class="hero-lead">Je crée des sites pour les salons de coiffure, instituts, garages et commerces de quartier : vos tarifs, vos horaires et vos photos, lisibles sur téléphone. 390&nbsp;€, modifications à volonté avant la mise en ligne.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="#modeles">Voir les modèles
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#contact">Demander mon site</a>
+        </div>
+        <p class="hero-note">Tout se fait à distance, par message. Vous n'avez rien à installer.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="fan" id="fan">
+          <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Modèle garage</span></div><img src="img/garage-ordi.jpg" alt="" width="1200" height="750"></figure>
+          <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Modèle institut de beauté</span></div><img src="img/institut-ordi.jpg" alt="" width="1200" height="750"></figure>
+          <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Modèle salon de coiffure</span></div><img src="img/coiffeur-ordi.jpg" alt="" width="1200" height="750"></figure>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="facts">
+        <li><b>48&nbsp;h</b><span>entre votre accord et un site prêt à relire</span></li>
+        <li><b>390&nbsp;€</b><span>une seule fois, sans abonnement obligatoire</span></li>
+        <li><b>50&nbsp;%</b><span>à la commande, le reste seulement si le résultat vous plaît</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="modeles">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Les modèles</p>
+        <h2>Trois sites à ouvrir et à parcourir.</h2>
+        <p>Cliquez sur un modèle : il s'ouvre ici, en vrai, et vous pouvez le faire défiler comme un client le ferait. Chaque métier a son propre style, je ne recopie pas le même gabarit.</p>
+      </div>
+
+      <div class="models">
+        <article class="model m-coiffeur rv">
+          <button class="shot" type="button" data-model="coiffeur" aria-label="Ouvrir le modèle Atelier Mèche, salon de coiffure">
+            <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Atelier Mèche</span></div><img src="img/coiffeur-ordi.jpg" alt="Page d'accueil du modèle Atelier Mèche : fond brun, grandes lettres crème et carte « ouvert en ce moment »" width="1200" height="750" loading="lazy" decoding="async"></figure>
+            <figure class="phone"><img src="img/coiffeur-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></figure>
+            <span class="shot-cta"><i></i>Voir le site en direct</span>
+          </button>
+          <div>
+            <p class="model-num">01</p>
+            <h3>Atelier Mèche</h3>
+            <p class="model-kind">Salon de coiffure · barbier</p>
+            <p class="model-desc">Une ambiance chaleureuse, brun et cuivre, avec des mèches qui ondulent en fond. Le client voit tout de suite si le salon est ouvert et combien coûte sa coupe.</p>
+            <ul class="model-list">
+              <li>Statut « ouvert en ce moment » calculé en direct</li>
+              <li>Tarifs clairs, prestation par prestation</li>
+              <li>Nuancier de couleurs interactif</li>
+              <li>Demande de rendez-vous depuis le site</li>
+            </ul>
+            <div class="model-cta">
+              <button class="btn btn-main" type="button" data-model="coiffeur">Voir le site en direct</button>
+              <a class="link" href="https://akanayan.github.io/atelier-meche/" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="model m-institut rv">
+          <button class="shot" type="button" data-model="institut" aria-label="Ouvrir le modèle Maison Opaline, institut de beauté">
+            <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Maison Opaline</span></div><img src="img/institut-ordi.jpg" alt="Page d'accueil du modèle Maison Opaline : fond clair, vert sauge et rose poudré, dessin d'une branche" width="1200" height="750" loading="lazy" decoding="async"></figure>
+            <figure class="phone"><img src="img/institut-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></figure>
+            <span class="shot-cta"><i></i>Voir le site en direct</span>
+          </button>
+          <div>
+            <p class="model-num">02</p>
+            <h3>Maison Opaline</h3>
+            <p class="model-kind">Institut de beauté · spa · onglerie</p>
+            <p class="model-desc">Un style doux et calme, vert sauge et rose poudré. La carte des soins se parcourt par catégories et la carte cadeau donne envie d'offrir.</p>
+            <ul class="model-list">
+              <li>Carte des soins rangée par onglets</li>
+              <li>Rituel expliqué étape par étape</li>
+              <li>Carte cadeau en relief, qui bouge sous le doigt</li>
+              <li>Demande de rendez-vous depuis le site</li>
+            </ul>
+            <div class="model-cta">
+              <button class="btn btn-main" type="button" data-model="institut">Voir le site en direct</button>
+              <a class="link" href="https://akanayan.github.io/maison-opaline/" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="model m-garage rv">
+          <button class="shot" type="button" data-model="garage" aria-label="Ouvrir le modèle Garage du Canal, garage automobile">
+            <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Garage du Canal</span></div><img src="img/garage-ordi.jpg" alt="Page d'accueil du modèle Garage du Canal : fond gris foncé, grandes lettres orange « On répare. Vous roulez. »" width="1200" height="750" loading="lazy" decoding="async"></figure>
+            <figure class="phone"><img src="img/garage-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></figure>
+            <span class="shot-cta"><i></i>Voir le site en direct</span>
+          </button>
+          <div>
+            <p class="model-num">03</p>
+            <h3>Garage du Canal</h3>
+            <p class="model-kind">Garage · carrosserie · contrôle</p>
+            <p class="model-desc">Un style d'atelier, net et direct, gris graphite et orange. Le client touche la voiture pour voir chaque prestation et estime son devis lui-même.</p>
+            <ul class="model-list">
+              <li>Voiture interactive avec 5 points de contrôle</li>
+              <li>Estimateur de devis, ligne par ligne</li>
+              <li>Méthode de travail et avis clients</li>
+              <li>Appel de l'atelier en un geste</li>
+            </ul>
+            <div class="model-cta">
+              <button class="btn btn-main" type="button" data-model="garage">Voir le site en direct</button>
+              <a class="link" href="https://akanayan.github.io/garage-du-canal/" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="models-note rv"><b>Ce sont des sites de démonstration</b> : les commerces, les avis et les numéros affichés sont fictifs. Le vôtre est fait à votre nom, avec vos couleurs, vos tarifs et vos photos.</p>
+    </div>
+  </section>
+
+  <div class="trades" aria-label="Autres métiers possibles">
+    <div class="trades-track" id="trades">
+      <ul>
+        <li>Boulangerie</li><li>Restaurant</li><li>Fleuriste</li><li>Barbier</li><li>Auto-école</li><li>Plombier</li><li>Onglerie</li><li>Électricien</li><li>Pressing</li><li>Carrosserie</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="sec light" id="inclus">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Ce qui est inclus</p>
+        <h2>Tout ce qu'il faut, rien à gérer.</h2>
+        <p>Vous m'envoyez vos tarifs, vos horaires et quelques photos prises au téléphone. Je m'occupe du reste, textes compris.</p>
+      </div>
+      <ul class="incl">
+        <li class="rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.400 9.400l6-.8z"/></svg>
+          <h3>Un site à votre nom</h3>
+          <p>Vos couleurs, votre ambiance, vos mots. Un style dessiné pour votre métier, pas un gabarit recopié.</p>
+        </li>
+        <li class="rv" style="--d:.08s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M11 18.500h2"/></svg>
+          <h3>Pensé pour le téléphone</h3>
+          <p>Vos clients vous cherchent depuis leur téléphone. La version mobile est redessinée, pas seulement rétrécie.</p>
+        </li>
+        <li class="rv" style="--d:.16s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.200 2"/></svg>
+          <h3>Horaires et tarifs clairs</h3>
+          <p>Le site affiche « ouvert » ou « fermé » tout seul selon l'heure, et vos tarifs se lisent en dix secondes.</p>
+        </li>
+        <li class="rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <h3>Contact en un geste</h3>
+          <p>Bouton d'appel, itinéraire et demande de rendez-vous : le client vous joint sans chercher.</p>
+        </li>
+        <li class="rv" style="--d:.08s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.500-1L20 7.500 16.500 4 5 15.500z"/><path d="M14 6.500l3.500 3.500"/></svg>
+          <h3>Modifications à volonté</h3>
+          <p>Vous demandez tous les changements que vous voulez avant la mise en ligne. Ensuite, les corrections sont gratuites pendant 30 jours.</p>
+        </li>
+        <li class="rv" style="--d:.16s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.500-3.400 8-8 9-4.600-1-8-4.500-8-9V6z"/><path d="M9 12l2.200 2.200L15.200 10"/></svg>
+          <h3>Le site vous appartient</h3>
+          <p>Le nom de domaine est acheté à votre nom, avec votre carte. Vous restez propriétaire de votre adresse.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="offre">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Le tarif</p>
+        <h2>Un prix, annoncé d'avance.</h2>
+        <p>Pas de devis à rallonge ni de frais cachés. Vous savez ce que vous payez avant de commencer.</p>
+      </div>
+      <div class="offer">
+        <div class="price rv">
+          <p class="price-tag">Site complet, une page</p>
+          <p class="price-num">390&nbsp;€ <small>une seule fois,<br>mise en ligne comprise</small></p>
+          <div class="pay">
+            <div><b>195&nbsp;€</b><span>à la commande, pour lancer le travail</span></div>
+            <div><b>195&nbsp;€</b><span>à la livraison, seulement si le résultat vous plaît</span></div>
+          </div>
+          <a class="btn btn-ink" href="#contact">Demander mon site</a>
+        </div>
+        <ul class="offer-list rv" style="--d:.1s">
+          <li><b>Délai</b><span>Votre site est prêt à relire 48&nbsp;h après votre accord et l'envoi de vos informations.</span></li>
+          <li><b>Modifications</b><span>Illimitées et gratuites avant la mise en ligne, puis corrections gratuites pendant 30 jours.</span></li>
+          <li><b>Suivi, en option</b><span>15&nbsp;€ par mois pour changer vos horaires, tarifs et photos autant que vous voulez. Sans l'option : 25&nbsp;€ par demande.</span></li>
+          <li><b>Nom de domaine</b><span>Environ 10 à 15&nbsp;€ par an, payés directement par vous au fournisseur. Je vous guide pour l'acheter.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="etapes">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Le déroulement</p>
+        <h2>Dix minutes de votre temps.</h2>
+        <p>Tout se passe par message, sans rendez-vous ni déplacement.</p>
+      </div>
+      <ol class="steps">
+        <li class="rv"><i></i><h3>Vous m'écrivez</h3><p>Sur WhatsApp, avec le nom de votre commerce et le modèle qui vous plaît.</p></li>
+        <li class="rv" style="--d:.08s"><i></i><h3>Vous envoyez vos infos</h3><p>Tarifs, horaires, adresse et quelques photos. Une photo de votre carte suffit.</p></li>
+        <li class="rv" style="--d:.16s"><i></i><h3>Je crée votre site</h3><p>En 48&nbsp;h, vous recevez un lien pour le voir sur votre téléphone.</p></li>
+        <li class="rv" style="--d:.24s"><i></i><h3>Vous validez</h3><p>Vous demandez vos changements, puis je mets le site en ligne à votre adresse.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="questions">
+    <div class="wrap faq">
+      <div class="head rv">
+        <p class="eyebrow">Vos questions</p>
+        <h2>Ce qu'on me demande souvent.</h2>
+        <p>Une autre question ? Écrivez-moi, je réponds par message.</p>
+      </div>
+      <div class="faq-list rv" style="--d:.1s">
+        <details>
+          <summary>Je n'ai ni photos ni textes, c'est un problème ?</summary>
+          <p>Non. Quelques photos prises au téléphone suffisent pour démarrer, et j'écris les textes à partir de ce que vous me dites de votre commerce. Vous relisez, je corrige.</p>
+        </details>
+        <details>
+          <summary>Et si le résultat ne me plaît pas ?</summary>
+          <p>Vous demandez autant de modifications que vous voulez avant la mise en ligne. La seconde moitié du prix n'est due que si le résultat vous plaît.</p>
+        </details>
+        <details>
+          <summary>Je pourrai changer mes horaires ou mes tarifs plus tard ?</summary>
+          <p>Oui. Les corrections sont gratuites pendant 30 jours après la mise en ligne. Ensuite, vous choisissez : 15&nbsp;€ par mois pour des modifications illimitées, ou 25&nbsp;€ par demande.</p>
+        </details>
+        <details>
+          <summary>J'ai déjà une page Facebook, Instagram ou Planity.</summary>
+          <p>Très bien, on les relie au site. Le site, lui, est une adresse à votre nom que vous contrôlez, avec vos tarifs, vos horaires et votre itinéraire au même endroit.</p>
+        </details>
+        <details>
+          <summary>Mon métier n'est pas dans les modèles.</summary>
+          <p>Les trois modèles montrent le niveau de finition. Pour une boulangerie, un restaurant, un fleuriste ou un artisan, je dessine un style adapté à votre métier, au même prix.</p>
+        </details>
+        <details>
+          <summary>Faut-il se rencontrer ?</summary>
+          <p>Non. Tout se fait à distance, par message, où que vous soyez en France.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Me contacter</p>
+        <h2 style="margin-top:18px">On fait le vôtre ?</h2>
+        <p class="contact-lead">Dites-moi le nom de votre commerce et le modèle qui vous plaît. Je vous réponds par message et je vous dis ce dont j'ai besoin pour commencer.</p>
+        <a class="btn btn-wa" id="waDirect" href="https://wa.me/33619797559?text=Bonjour%20Julien%2C%20j%27ai%20vu%20vos%20mod%C3%A8les%20et%20je%20voudrais%20un%20site%20pour%20mon%20commerce." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm0 1.800a8.200 8.200 0 1 1-4.200 15.250l-.300-.180-2.950.770.790-2.870-.200-.300A8.200 8.200 0 0 1 12 3.800zm-3.400 4.300c-.200 0-.500.070-.750.350-.260.280-.980.960-.980 2.330s1 2.700 1.140 2.900c.140.180 1.970 3 4.780 4.200 2.340 1 2.810.800 3.320.750.500-.050 1.630-.670 1.860-1.310.230-.640.230-1.190.160-1.310-.070-.110-.260-.180-.540-.320-.280-.140-1.630-.800-1.880-.900-.260-.090-.440-.140-.630.140-.180.280-.720.900-.880 1.080-.160.180-.330.200-.600.070-.280-.140-1.180-.440-2.250-1.390-.830-.740-1.390-1.650-1.550-1.930-.160-.280-.020-.430.120-.570.130-.120.280-.320.420-.480.140-.160.180-.280.280-.460.090-.180.050-.350-.020-.490-.070-.140-.620-1.540-.860-2.100-.220-.540-.450-.470-.620-.480z"/></svg>
+          M'écrire sur WhatsApp
+        </a>
+        <p class="contact-num">WhatsApp uniquement : <b>06&nbsp;19&nbsp;79&nbsp;75&nbsp;59</b></p>
+      </div>
+
+      <form class="form rv" id="brief" novalidate style="--d:.1s">
+        <h3>Votre demande en 30 secondes</h3>
+        <p>Remplissez ces quatre lignes : WhatsApp s'ouvre avec le message déjà écrit.</p>
+        <div class="field" id="f-nom">
+          <label for="nom">Nom de votre commerce</label>
+          <input id="nom" name="nom" type="text" autocomplete="organization" placeholder="Ex. Salon Élégance" required>
+          <p class="err" id="e-nom">Indiquez le nom de votre commerce.</p>
+        </div>
+        <div class="field">
+          <label for="metier">Votre métier</label>
+          <select id="metier" name="metier">
+            <option>Salon de coiffure</option>
+            <option>Barbier</option>
+            <option>Institut de beauté</option>
+            <option>Garage</option>
+            <option>Restaurant</option>
+            <option>Boulangerie</option>
+            <option>Artisan</option>
+            <option>Autre commerce</option>
+          </select>
+        </div>
+        <div class="field" id="f-ville">
+          <label for="ville">Ville</label>
+          <input id="ville" name="ville" type="text" autocomplete="address-level2" placeholder="Ex. Cambrai" required>
+          <p class="err" id="e-ville">Indiquez votre ville.</p>
+        </div>
+        <fieldset class="field">
+          <legend>Le modèle qui vous plaît le plus</legend>
+          <div class="chips">
+            <label><input type="radio" name="modele" value="Atelier Mèche"><span>Atelier Mèche</span></label>
+            <label><input type="radio" name="modele" value="Maison Opaline"><span>Maison Opaline</span></label>
+            <label><input type="radio" name="modele" value="Garage du Canal"><span>Garage du Canal</span></label>
+            <label><input type="radio" name="modele" value="" checked><span>Je ne sais pas encore</span></label>
+          </div>
+        </fieldset>
+        <button class="btn btn-wa" type="submit">Préparer mon message WhatsApp</button>
+        <p class="form-ok" id="formOk" role="status">WhatsApp s'ouvre avec votre message. Il ne reste qu'à appuyer sur « Envoyer ».</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <a class="brand" href="#top"><img src="logo.svg" alt="" width="40" height="40" loading="lazy"><span>Julien<small>Création de sites web</small></span></a>
+      <nav aria-label="Pied de page">
+        <a href="#modeles">Modèles</a>
+        <a href="#offre">Tarif</a>
+        <a href="#questions">Questions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <small class="foot-legal">© <span id="year">2026</span> Julien — Création de sites web pour commerces de proximité, partout en France. Les trois modèles présentés sont des sites de démonstration.</small>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="btn btn-ghost" href="#modeles">Les modèles</a>
+  <a class="btn btn-main" href="#contact">Me contacter</a>
+</div>
+
+<dialog class="viewer" id="viewer" aria-labelledby="vName">
+  <div class="v-bar">
+    <div class="v-title"><b id="vName">Modèle</b><span id="vKind">Site de démonstration</span></div>
+    <div class="seg" role="group" aria-label="Taille d'écran">
+      <button type="button" id="vDesk" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Ordinateur</button>
+      <button type="button" id="vPhone" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/></svg>Téléphone</button>
+    </div>
+    <a class="v-open" id="vOpen" href="#" target="_blank" rel="noopener" aria-label="Ouvrir ce modèle dans un nouvel onglet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg><span>Nouvel onglet</span></a>
+    <button class="v-close" type="button" id="vClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Fermer</button>
+  </div>
+  <div class="v-stage">
+    <div class="v-device" id="vDevice">
+      <div class="v-load" id="vLoad"><div><i></i>Ouverture du modèle…</div></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  $('year').textContent = new Date().getFullYear();
+
+  /* Barre du haut */
+  var nav = $('nav');
+  var onScroll = function () { nav.classList.toggle('stuck', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Apparitions au défilement */
+  var items = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    items.forEach(function (n) { io.observe(n); });
+  } else {
+    items.forEach(function (n) { n.classList.add('in'); });
+  }
+
+  /* Bandeau des métiers : la liste est doublée pour boucler sans saut */
+  var track = $('trades');
+  if (track && !reduce) {
+    var copy = track.firstElementChild.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+  }
+
+  /* Relief des fenêtres de l'accueil */
+  var fan = $('fan');
+  if (fan && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var hero = fan.closest('.hero');
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      fan.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+      fan.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+    });
+    hero.addEventListener('pointerleave', function () {
+      fan.style.setProperty('--ry', '0deg'); fan.style.setProperty('--rx', '0deg');
+    });
+  }
+
+  /* Barre mobile : masquée quand le contact est à l'écran */
+  var dock = $('dock'), contact = $('contact');
+  if (dock && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      dock.classList.toggle('hide', entries[0].isIntersecting);
+    }, { threshold: .15 }).observe(contact);
+  }
+
+  /* Visionneuse des modèles */
+  var MODELS = {
+    coiffeur: { name: 'Atelier Mèche', kind: 'Modèle salon de coiffure · site de démonstration', url: 'https://akanayan.github.io/atelier-meche/' },
+    institut: { name: 'Maison Opaline', kind: 'Modèle institut de beauté · site de démonstration', url: 'https://akanayan.github.io/maison-opaline/' },
+    garage: { name: 'Garage du Canal', kind: 'Modèle garage · site de démonstration', url: 'https://akanayan.github.io/garage-du-canal/' }
+  };
+  var viewer = $('viewer'), device = $('vDevice'), load = $('vLoad');
+  var bDesk = $('vDesk'), bPhone = $('vPhone'), lastTrigger = null, frame = null, pushed = false;
+
+  function setMode(phone) {
+    device.classList.toggle('as-phone', phone);
+    bDesk.setAttribute('aria-pressed', String(!phone));
+    bPhone.setAttribute('aria-pressed', String(phone));
+  }
+  function openViewer(key, trigger) {
+    var m = MODELS[key];
+    if (!m) return;
+    if (typeof viewer.showModal !== 'function') { window.open(m.url, '_blank', 'noopener'); return; }
+    lastTrigger = trigger || null;
+    $('vName').textContent = m.name;
+    $('vKind').textContent = m.kind;
+    $('vOpen').href = m.url;
+    setMode(false);
+    load.classList.remove('off');
+    frame = document.createElement('iframe');
+    frame.title = 'Modèle ' + m.name;
+    frame.addEventListener('load', function () { load.classList.add('off'); });
+    frame.src = m.url;
+    device.appendChild(frame);
+    viewer.showModal();
+    try { history.pushState({ viewer: key }, ''); pushed = true; } catch (e) { pushed = false; }
+  }
+  viewer.addEventListener('close', function () {
+    if (frame) { frame.remove(); frame = null; }
+    if (pushed) { pushed = false; history.back(); }
+    if (lastTrigger) lastTrigger.focus();
+  });
+  window.addEventListener('popstate', function () {
+    if (viewer.open) { pushed = false; viewer.close(); }
+  });
+  $('vClose').addEventListener('click', function () { viewer.close(); });
+  bDesk.addEventListener('click', function () { setMode(false); });
+  bPhone.addEventListener('click', function () { setMode(true); });
+  document.querySelectorAll('[data-model]').forEach(function (b) {
+    b.addEventListener('click', function () { openViewer(b.getAttribute('data-model'), b); });
+  });
+
+  /* Formulaire : compose le message WhatsApp */
+  var form = $('brief'), ok = $('formOk');
+  function check(id) {
+    var input = $(id), field = $('f-' + id), bad = !input.value.trim();
+    field.classList.toggle('bad', bad);
+    input.setAttribute('aria-invalid', String(bad));
+    if (bad) input.setAttribute('aria-describedby', 'e-' + id); else input.removeAttribute('aria-describedby');
+    return !bad;
+  }
+  ['nom', 'ville'].forEach(function (id) {
+    $(id).addEventListener('input', function () { if ($('f-' + id).classList.contains('bad')) check(id); });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    ok.classList.remove('on');
+    var a = check('nom'), b = check('ville');
+    if (!a) { $('nom').focus(); return; }
+    if (!b) { $('ville').focus(); return; }
+    var modele = (form.querySelector('input[name="modele"]:checked') || {}).value || '';
+    var msg = 'Bonjour Julien, je voudrais un site pour ' + $('nom').value.trim() +
+      ' (' + $('metier').value.toLowerCase() + ', ' + $('ville').value.trim() + ').' +
+      (modele ? ' Le modèle qui me plaît le plus : ' + modele + '.' : ' Je n\'ai pas encore choisi de modèle.');
+    window.open('https://wa.me/33619797559?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    ok.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>
